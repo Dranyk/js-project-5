@@ -1,6 +1,5 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-
 .container {
     max-width: 100%;
     padding-left: 20px;
@@ -43,4 +42,5 @@ img {
 
   a{
     text-decoration: none;
+    color: inherit;
   }
