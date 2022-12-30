@@ -16,42 +16,51 @@
   }  
 
 
-    @media screen and (min-width: 768px)  {
+    @media screen and (min-width: 768px) and (max-width:1279px)  {
       .main-list {
         display: flex;
       flex-wrap: wrap;
       gap: 32px;
       padding-top: 60px;
       padding-bottom: 60px;
+      
       }
 
       padding-left: 32px;
       padding-right: 32px;
+      margin-left: auto;
+      margin-right: auto;
       width: 768px;
       
 }
 
   @media (min-width: 1280px) {
-        padding-left:  34px;
-        padding-right: 30px;
       width: 1280px;
       margin-right: auto;
       margin-left: auto;
+      padding-left: 32px;
+      padding-right: 32px;
+      
 
       .main-list {
         display: flex;
         flex-wrap: wrap;
         max-width: 1216px;
-       
+        padding-top: 60px;
+        padding-bottom: 60px;
       }
       .table-item {
-        width: calc((100% - 16px *2) /3);
         margin-right: 16px;
-        float: left;
+        margin-bottom: 32px;
       }
+
+      .table-item:nth-child(3n) {
+        margin-right: 0;
+      }
+
+
       .table-item:last-child {
         margin-right: 0;
-        float: right;
       }
       
     }
@@ -59,20 +68,16 @@
   
 
 
-//   .main-list__item:not(:last-child){
-//     @media screen and (max-width:767px){
-//         margin-bottom: 20px;
+  
 
-//   .table-item {
-//     width: 280px;
-//     @media screen and (min-width:768px) {
-//       width: 336px;
-//     }
-//     @media screen and (min-width:1280px) {
-//       width: 394px;
-
-//     }
 
   .table-item {
-    width: 395px;
+    width: 280px;
+    @media screen and (min-width:768px) {
+      width: 336px;
+    }
+    @media screen and (min-width:1280px) {
+      width: 394px;
+
+    }
   }
