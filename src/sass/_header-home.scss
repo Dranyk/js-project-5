@@ -188,7 +188,7 @@
   .error-search {
     display: flex;
     justify-content: center;
-    visibility: hidden;
+    // visibility: hidden;
     margin-top: 16px;
     font-weight: 400;
     font-size: 14;
@@ -208,3 +208,6 @@
     visibility: visible;
   }
   
+  .is-hidden {
+    display: none;
+  }
