@@ -57,24 +57,21 @@
     }
   }
   
-<<<<<<< Updated upstream
-  
 
-  .main-list__item:not(:last-child){
-    @media screen and (max-width:767px){
-        margin-bottom: 20px;
-=======
 
-  .table-item {
-    width: 280px;
-    @media screen and (min-width:768px) {
-      width: 336px;
-    }
-    @media screen and (min-width:1280px) {
-      width: 394px;
->>>>>>> Stashed changes
-    }
-  }
+//   .main-list__item:not(:last-child){
+//     @media screen and (max-width:767px){
+//         margin-bottom: 20px;
+
+//   .table-item {
+//     width: 280px;
+//     @media screen and (min-width:768px) {
+//       width: 336px;
+//     }
+//     @media screen and (min-width:1280px) {
+//       width: 394px;
+
+//     }
 
   .table-item {
     width: 395px;
