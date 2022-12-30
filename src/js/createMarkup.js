@@ -1,7 +1,7 @@
 import MoviesApi from './movie-service';
 const moviesApi = new MoviesApi();
 
-const body = document.querySelector('body');
+const body = document.querySelector('.main-list');
 export async function createMarkup(data) {
     const genres = await moviesApi.fetchGenres().then((response) => response.genres);
     
