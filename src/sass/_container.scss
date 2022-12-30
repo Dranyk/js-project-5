@@ -1,4 +1,5 @@
 .container {
+  @media screen and (max-width:767px) {
     max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
@@ -7,42 +8,70 @@
       .main-list{
       padding-top: 20px;
       padding-bottom: 20px;
-   }
-    @media screen and (min-width: 768px)  {
 
-      padding-left: 32px;
-      padding-right: 32px;
-      max-width: 768px;
+      .table-item:not(:last-child) {
+        margin-bottom: 20px;
+      }
+   }
+  }  
+
+
+    @media screen and (min-width: 768px)  {
       .main-list {
         display: flex;
       flex-wrap: wrap;
       gap: 32px;
-      overflow: auto;
       padding-top: 60px;
       padding-bottom: 60px;
       }
+
+      padding-left: 32px;
+      padding-right: 32px;
+      width: 768px;
+      
 }
 
   @media (min-width: 1280px) {
         padding-left:  34px;
         padding-right: 30px;
-      max-width: 1280px;
+      width: 1280px;
+      margin-right: auto;
+      margin-left: auto;
 
       .main-list {
+        display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        max-width: 1216px;
+       
       }
-      .main-list__item {
-        margin-bottom: 32px;
+      .table-item {
+        width: calc((100% - 16px *2) /3);
+        margin-right: 16px;
+        float: left;
+      }
+      .table-item:last-child {
+        margin-right: 0;
+        float: right;
       }
       
     }
   }
   
+<<<<<<< Updated upstream
   
 
   .main-list__item:not(:last-child){
     @media screen and (max-width:767px){
         margin-bottom: 20px;
+=======
+
+  .table-item {
+    width: 280px;
+    @media screen and (min-width:768px) {
+      width: 336px;
+    }
+    @media screen and (min-width:1280px) {
+      width: 394px;
+>>>>>>> Stashed changes
     }
   }
