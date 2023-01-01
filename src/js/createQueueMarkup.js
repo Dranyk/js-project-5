@@ -1,5 +1,13 @@
-export const createQueueMarkup = ({ id, poster_path, release_date, title }) =>
-  `<li class="table-item film-card__item" data-id="${id}">
+export const createQueueMarkup = filmsQueue =>
+  filmsQueue
+    .map(
+      ({
+        id,
+        poster_path,
+        release_date,
+        title,
+        genresList,
+      }) => `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
                 <img 
                 src="https://image.tmdb.org/t/p/w400${poster_path}" 
@@ -13,4 +21,6 @@ export const createQueueMarkup = ({ id, poster_path, release_date, title }) =>
                     <span class="card-year">${release_date.slice(0, 4)}</span>
                 </p>
             </div>
-        </li>`.join('');
+        </li>`
+    )
+    .join('');

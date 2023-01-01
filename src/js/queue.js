@@ -1,17 +1,22 @@
 import { fetchMovieById } from './fetchMovieById';
-import { createQueueMarkup } from './createQueueMarkup';
 
-const refs = {
+const createBtnMurkup = () => {
+  return `<button class="queue-modal-btn">Add to queue</button>`;
+};
+
+document.body.insertAdjacentHTML('beforeend', createBtnMurkup());
+
+refs = {
   queueModalBtn: document.querySelector('.queue-modal-btn'),
 };
 
-console.log(refs.queueModalBtn);
+export const createsFilmsQueue = () => {
+  if (!localStorage.filmsQueue) {
+    localStorage.setItem('filmsQueue', JSON.stringify([]));
+  }
+};
 
-if (!localStorage.filmsQueue) {
-  localStorage.setItem('filmsQueue', JSON.stringify([]));
-}
-
-const saveData = ({ id, poster_path, release_date, title } = {}) => {
+const saveData = ({ id, poster_path, release_date, title }) => {
   const movieData = {
     id,
     poster_path,
@@ -38,11 +43,11 @@ const removeData = ({ id }) => {
   localStorage.setItem('filmsQueue', JSON.stringify(updatedMovies));
 };
 
-const moviesQueueRender = () => {};
-
 const onQueueModalBtnClick = async () => {
-  // movieId = 10;
-  const data = await fetchMovieById();
+  const movieId = 19;
+  const data = await fetchMovieById(movieId);
+
+  if (!data) return;
 
   if (JSON.parse(localStorage.filmsQueue).some(({ id }) => id === data.id)) {
     removeData(data);
@@ -52,5 +57,7 @@ const onQueueModalBtnClick = async () => {
   saveData(data);
   console.log(localStorage.filmsQueue);
 };
+
+createsFilmsQueue();
 
 refs.queueModalBtn.addEventListener('click', onQueueModalBtnClick);
