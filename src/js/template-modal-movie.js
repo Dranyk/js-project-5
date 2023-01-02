@@ -35,7 +35,9 @@ export const modalWindowMovieMarkup = ({
           </li>
           <li class="modal-movie__item-values">${popularity}</li>
           <li class="modal-movie__item-values">${original_title.toUpperCase()}</li>
-          <li class="modal-movie__item-values"><span class="modal-movie__item-genres">${genres.map(genre=>genre.name).join(',')}</span></li>
+          <li class="modal-movie__item-values"><span class="modal-movie__item-genres">${genres
+            .map(genre => genre.name)
+            .join(',')}</span></li>
         </ul>
       </div>
       <h3 class="modal-movie__subtitle">About</h3>
@@ -43,7 +45,7 @@ export const modalWindowMovieMarkup = ({
         ${overview}
       </p>
       <div class="modal-movie__btn-wrapper">
-        <button type="button" class="modal-btn modal-movie__btn-watched">
+        <button type="button" id ="title" class="modal-btn modal-movie__btn-watched">
           add to Watched
         </button>
         <button type="button" class="modal-btn modal-movie__btn-queue">
