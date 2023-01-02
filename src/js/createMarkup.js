@@ -28,7 +28,7 @@ export async function createMarkup(data) {
                 <p class="card-info">${genresList}<span class="card-year">${release_date.slice(0,4)}</span></p>
             </div>
         </li> `;
-        container.insertAdjacentHTML('afterbegin', markup);                    
+        container.insertAdjacentHTML('beforeend', markup);                    
     }).join('');
     }
 }
