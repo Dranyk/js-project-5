@@ -7,8 +7,8 @@ const searchParams = new URLSearchParams({
   language: 'en-US',
 });
 
-export const fetchMovieById = async movieId => {
-  const url = `${movieId}?${searchParams}`;
+export const fetchMovieById = async currentMovieId => {
+  const url = `${currentMovieId}?${searchParams}`;
   try {
     const response = await axios.get(url);
     return await response.data;

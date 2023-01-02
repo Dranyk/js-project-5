@@ -6,6 +6,7 @@ export default class MoviesApi {
     constructor() {
         this.searchQuery = '';
         this.page = 1;
+        this.idMovie = '';
     } 
     
     async fetchMovieByQuery() {                
@@ -28,4 +29,20 @@ export default class MoviesApi {
             return response.data;
         });        
     }
+    get id() {
+        return this.idMovie;
+      }
+    set id(newIdMovie) {
+        this.idMovie = newIdMovie;
+      }
+    
+    async fetchDetails() {
+        return await axios
+          .get(
+            `${this.#url}/3/movie/${this.idMovie}?api_key=${
+              this.#api_key
+            }&language=en-US`
+          )
+          }
+    
 }

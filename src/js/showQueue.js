@@ -1,6 +1,6 @@
 import { createQueueMarkup } from './createQueueMarkup';
 import toastr from 'toastr';
-import { createsFilmsQueue } from './queue';
+import { createsFilmsQueue, onMovieCardClick } from './queue';
 
 import './toastr.config';
 import 'toastr/build/toastr.min.css';
@@ -26,3 +26,4 @@ const onShowQueueBtnClick = () => {
 createsFilmsQueue();
 
 refs.showQueueBtn.addEventListener('click', onShowQueueBtnClick);
+refs.queueList.addEventListener('click', onMovieCardClick);
