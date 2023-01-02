@@ -47,7 +47,7 @@ export const modalWindowMovieMarkup = ({
           add to Watched
         </button>
         <button type="button" class="modal-btn modal-movie__btn-queue">
-          add to queue
+        add to queue
         </button>
       </div>
       </div>
