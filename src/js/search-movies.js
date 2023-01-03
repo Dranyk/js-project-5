@@ -11,11 +11,13 @@ renderImg();
 
 async function renderImg() {
   spinerPlay();
-  await movieApiService.fetchMovie().then(data => createMarkup(data))
+  await movieApiService.fetchMovie().then(data => {
+    createMarkup(data);
+    spinerStop();
+  })
   .catch(error => {
     console.log(error);
-  });
-  spinerStop();
+  });  
 };
 
 async function onSearch(e) {
@@ -25,8 +27,13 @@ async function onSearch(e) {
     movieApiService.resetPage();
     e.currentTarget.elements.searchFilm.value = '';
     spinerPlay();
-    await movieApiService.fetchMovieByQuery().then((data) => createMarkup(data));
-    spinerStop();
+    await movieApiService.fetchMovieByQuery().then((data) => {
+      createMarkup(data);
+      spinerStop();
+  })
+  .catch(error => {
+    console.log(error);
+  });      
 }
 
 
