@@ -11,8 +11,9 @@ renderImg();
 
 function renderImg() {
   movieApiService.axiosApiMovie().then(movies => {
+  const allMovies = movies.data.results;  
 
-    const markup = movies.data.results.map((movie) =>
+  const markup = allMovies.map((movie) =>
       `<li class="table-item film-card__item" data-id="${movie.id}">
             <div class="card-thumb">
                 <img 
@@ -60,5 +61,8 @@ function GenresOfMovie(ids) {
 
     return removedGenres.join(', ');
   }
-
+ if (movieGenres.length === 0) {
+    return (movieGenres = 'Not found');
+  }
+  return movieGenres.join(', ');
 }
