@@ -141,5 +141,4 @@ function handleClick(e) {
 
   localStorageApi.getMovies(storageKey);
   localStorageApi.addMovie(storageKey);
-  localStorageApi.removeMovie(storageKey);
 }
