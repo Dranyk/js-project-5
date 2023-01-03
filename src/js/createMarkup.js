@@ -17,6 +17,10 @@ export async function createMarkup(data) {
         if (!poster_path) {
             moviePosterPath = poster404;
         }
+        let movieData = '';
+        if (release_date) {
+            movieData = release_date.slice(0, 4);
+        }
         const markup = 
         `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
@@ -28,7 +32,7 @@ export async function createMarkup(data) {
             </div>
             <div class="card-desc">
                 <p class="card-title">${title}</p>
-                <p class="card-info">${genresList}<span class="card-year">${release_date.slice(0,4)}</span></p>
+                <p class="card-info">${genresList}<span class="card-year">${movieData}</span></p>
             </div>
         </li> `;
         container.insertAdjacentHTML('beforeend', markup);                    
