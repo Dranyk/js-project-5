@@ -40,7 +40,7 @@ const options = {
 const paginat = new Pagination('pagination', options);
 
 const page = paginat.getCurrentPage();
-console.log("paginat", pagштфк);
+console.log("paginat", paginat);
 
 
 const loadMorePopylarMovie = event => {
