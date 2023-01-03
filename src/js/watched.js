@@ -1,6 +1,9 @@
-// const btWatched = document.querySelector('#title');
+import MoviesApi from './movie-service';
+import { modalWindowMovieMarkup } from './template-modal-movie';
 
-// function handleClick() {
-//   console.log('hello');
-// }
-// btWatched.addEventListener('click', handleClick);
+const btWatched = document.querySelector('.modal-movie__btn-watched');
+
+
+function handleClick() {
+console.log('hello');
+}
