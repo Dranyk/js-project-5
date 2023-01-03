@@ -63,6 +63,11 @@
 
 .modal-movie__list-specifications {
   margin-right: 40px;
+
+}
+
+.modal-movie__item-specifications {
+  width: max-content;
 }
 
 .modal-movie__item-specifications,
@@ -146,12 +151,13 @@
   }
 }
 
-.modal-movie__btn-watched {
-  color: #ffffff;
-  background: #ff6b01;
-  border: none;
-}
+// .modal-movie__btn-watched {
+//   color: #ffffff;
+//   background: #ff6b01;
+//   border: none;
+// }
 
-.modal-movie__btn-queue {
+.modal-movie__btn-queue,
+.modal-movie__btn-watched {
   border: 1px solid #000000;
 }

@@ -37,7 +37,7 @@ export const modalWindowMovieMarkup = ({
           <li class="modal-movie__item-values">${original_title.toUpperCase()}</li>
           <li class="modal-movie__item-values"><span class="modal-movie__item-genres">${genres
             .map(genre => genre.name)
-            .join(',')}</span></li>
+            .join(', ')}</span></li>
         </ul>
       </div>
       <h3 class="modal-movie__subtitle">About</h3>

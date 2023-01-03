@@ -34,7 +34,7 @@ function onClickOutsideModal(e) {
   if (!modalInside) {
     closeModal();
   }
-  }
+}
 
 function clearModalInfo() {
   refs.renderModalCard.innerHTML = '';
@@ -44,8 +44,6 @@ function renderMarkupModal(data) {
   const renderModal = modalWindowMovieMarkup(data);
   refs.renderModalCard.insertAdjacentHTML('beforeend', renderModal);
 }
-
-
 
 function handleClick() {
   console.log('hello');
@@ -61,7 +59,9 @@ async function createMarkupModal(e) {
     console.log(details.data);
     clearModalInfo();
     renderMarkupModal(details.data);
-    showModal();   const btWatched = document.querySelector('#title');
+    showModal();
+    const btWatched = document.querySelector('#title');
+    console.log(btWatched);
     btWatched.addEventListener('click', handleClick);
     window.addEventListener('keydown', onEscKeyPress);
     document.addEventListener('click', onClickOutsideModal);
