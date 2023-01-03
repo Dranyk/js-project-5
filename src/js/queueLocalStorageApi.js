@@ -50,16 +50,16 @@ const onQueueModalBtnClick = async e => {
   if (JSON.parse(localStorage.filmsQueue).some(({ id }) => id === data.id)) {
     removeData(data);
 
-    e.target.textContent = 'ADD TO QUEUE';
+    e.target.textContent = 'add to queue';
     return;
   }
 
   saveData(data);
 
-  e.target.textContent = 'REMOVE FROM QUEUE';
+  e.target.textContent = 'remove from queue';
 };
 
-export const onMovieCardClick = e => {
+const onMovieCardClick = e => {
   if (e.target === e.currentTarget) return;
 
   currentMovieId = e.target.closest('.table-item').dataset.id;
