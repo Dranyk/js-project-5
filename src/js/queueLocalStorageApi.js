@@ -1,11 +1,8 @@
 import { fetchMovieById } from './fetchMovieById';
 
 const refs = {
-  MoviesList: document.querySelector('.main-list'),
   modal: document.querySelector('.modal'),
 };
-
-let currentMovieId = null;
 
 export const createsFilmsQueue = () => {
   if (!localStorage.filmsQueue) {
@@ -43,6 +40,8 @@ const removeData = ({ id }) => {
 const onQueueModalBtnClick = async e => {
   if (!e.target.classList.contains('modal-movie__btn-queue')) return;
 
+  const currentMovieId = e.target.dataset.id;
+
   const data = await fetchMovieById(currentMovieId);
 
   if (!data) return;
@@ -59,13 +58,6 @@ const onQueueModalBtnClick = async e => {
   e.target.textContent = 'remove from queue';
 };
 
-const onMovieCardClick = e => {
-  if (e.target === e.currentTarget) return;
-
-  currentMovieId = e.target.closest('.table-item').dataset.id;
-};
-
 createsFilmsQueue();
 
 refs.modal.addEventListener('click', onQueueModalBtnClick);
-refs.MoviesList.addEventListener('click', onMovieCardClick);
