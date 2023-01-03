@@ -54,8 +54,8 @@ export const modalWindowMovieMarkup = ({
             JSON.parse(localStorage.filmsQueue).some(
               data => data.id === Number(id)
             )
-              ? 'REMOVE FROM QUEUE'
-              : 'ADD TO QUEUE'
+              ? 'remove from queue'
+              : 'add to queue'
           }
         </button>
       </div>
