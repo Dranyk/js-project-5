@@ -9,6 +9,7 @@ export const modalWindowMovieMarkup = ({
   original_title,
   overview,
   genres,
+  id,
 }) =>
   ` <div class="modal-movie__img-wrapper">
       <img
@@ -44,5 +45,19 @@ export const modalWindowMovieMarkup = ({
       <p class="modal-movie__text">
         ${overview}
       </p>
+      <div class="modal-movie__btn-wrapper">
+        <button type="button" class="modal-btn modal-movie__btn-watched">
+          ADD TO WATCHED
+        </button>
+        <button type="button" class="modal-btn modal-movie__btn-queue">
+          ${
+            JSON.parse(localStorage.filmsQueue).some(
+              data => data.id === Number(id)
+            )
+              ? 'REMOVE FROM QUEUE'
+              : 'ADD TO QUEUE'
+          }
+        </button>
+      </div>
       </div>
       `;

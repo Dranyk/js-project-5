@@ -1,6 +1,6 @@
 import { createQueueMarkup } from './createQueueMarkup';
 import toastr from 'toastr';
-import { createsFilmsQueue, onMovieCardClick } from './queue';
+import { createsFilmsQueue, onMovieCardClick } from './addToQueue';
 
 import './toastr.config';
 import 'toastr/build/toastr.min.css';
