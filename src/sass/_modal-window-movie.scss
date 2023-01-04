@@ -158,5 +158,16 @@
 
 .modal-movie__btn-queue,
 .modal-movie__btn-watched {
+  background-color: #ffffff;
   border: 1px solid #000000;
+  border-radius: 5px;
+  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.modal-movie__btn-queue:hover,
+.modal-movie__btn-watched:hover {
+  border: inherit;
+  color: #ffffff;
+background-color: #FF6B01;
+transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
