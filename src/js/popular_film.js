@@ -11,10 +11,10 @@ renderImg();
 
 
 
-export function renderImg(data) {
-  console.log('data', data)
+export function renderImg(currentPage=1) {
+  // console.log('data', data)
   
- movieApiService.axiosApiMovie(data?data.page:1).then(response => {
+ movieApiService.axiosApiMovie(currentPage).then(response => {
   const allMovies = response.data.results;  
       document.querySelector(".container").innerHTML = "";
 

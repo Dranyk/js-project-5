@@ -50,21 +50,22 @@ const loadMorePopylarMovie = event => {
   // spinerPlay()
   paginat.reset(options.totalItems);
   
-  unsplash
-    .axiosApiMovie(currentPage)
-    .then((results) => {
-      renderImg(results.data);
-    })
-    .catch(error => {
-      // Notify.failure(error.message);
-      // containerPaginationRef.classList.add('is-hidden');
-    })
-    .finally(() => {
-      // spinerStop();
+        renderImg(currentPage);
+//   unsplash
+//     .axiosApiMovie(currentPage)
+//     .then((results) => {
+//       renderImg(results.data);
+//     })
+//     .catch(error => {
+//       // Notify.failure(error.message);
+//       // containerPaginationRef.classList.add('is-hidden');
+//     })
+//     .finally(() => {
+//       // spinerStop();
       
-      paginat.off('beforeMove', loadMorePopylarMovie);
-    });
-};
+//       paginat.off('beforeMove', loadMorePopylarMovie);
+//     });
+// };
 console.log('<<<<<paginat', paginat);
 
 paginat.on('beforeMove', loadMorePopylarMovie);
