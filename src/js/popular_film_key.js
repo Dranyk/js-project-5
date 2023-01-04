@@ -1,8 +1,11 @@
 import axios from "axios";
 
 export class MovieApiService {
+  constructor({ per_page = 20 } = {}) {
+    this.per_page = per_page;
+  }
 
-async axiosApiMovie() {
+async axiosApiMovie(page) {
 
   console.log(this);
 
@@ -20,6 +23,7 @@ async axiosApiMovie() {
 
         });
     };
+
 
 
 };

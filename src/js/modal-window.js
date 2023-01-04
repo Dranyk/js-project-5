@@ -45,6 +45,10 @@ function renderMarkupModal(data) {
   refs.renderModalCard.insertAdjacentHTML('beforeend', renderModal);
 }
 
+function handleClick() {
+  console.log('hello');
+}
+
 async function createMarkupModal(e) {
   const parentMovieCard = e.target.closest('.film-card__item');
   const idMovieCard = parentMovieCard.dataset.id;
@@ -56,6 +60,9 @@ async function createMarkupModal(e) {
     clearModalInfo();
     renderMarkupModal(details.data);
     showModal();
+    const btWatched = document.querySelector('#title');
+    console.log(btWatched);
+    btWatched.addEventListener('click', handleClick);
     window.addEventListener('keydown', onEscKeyPress);
     document.addEventListener('click', onClickOutsideModal);
   });
