@@ -1,16 +1,8 @@
-import { MovieApiService } from "./popular_film_key";
 import { renderImg } from "./popular_film";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
-const containerPaginationRef = document.getElementById("pagination");
-const containerRef = document.querySelector(".container");
-
 const PER_PAGE = 20;
-
-const unsplash = new MovieApiService({ per_page: PER_PAGE });
-
-const pagination = new Pagination(containerPaginationRef);
 
 const options = {
   totalItems: 20000,
@@ -38,38 +30,15 @@ const options = {
   }
 };
 
-// const paginat = new Pagination(containerPaginationRef, options);
-// console.log("paginat", paginat);
-  const paginat = new Pagination('pagination', options);
-// const page = paginat.getCurrentPage();
-// console.log("page", page);
+const paginat = new Pagination('pagination', options);
 
 const loadMorePopylarMovie = event => {
   
   const currentPage = event.page;
   // spinerPlay()
-  paginat.reset(options.totalItems);
-  
-        renderImg(currentPage);
-//   unsplash
-//     .axiosApiMovie(currentPage)
-//     .then((results) => {
-//       renderImg(results.data);
-//     })
-//     .catch(error => {
-//       // Notify.failure(error.message);
-//       // containerPaginationRef.classList.add('is-hidden');
-//     })
-//     .finally(() => {
-//       // spinerStop();
-      
-//       paginat.off('beforeMove', loadMorePopylarMovie);
-//     });
-// };
-console.log('<<<<<paginat', paginat);
+  const paginatOff = paginat.off('beforeMove', loadMorePopylarMovie);
+  renderImg(currentPage, paginatOff);
+};
 
 paginat.on('beforeMove', loadMorePopylarMovie);
 paginat.on('afterMove', loadMorePopylarMovie);
-
-
-

@@ -1,22 +1,16 @@
 import { MovieApiService } from "./popular_film_key";
 
-
-// const searchFormRef = document.querySelector("#search-form");
-
 const galleryContainer = document.querySelector(".main-list");
-
 const movieApiService  = new MovieApiService();
 
 renderImg();
 
-
-
-export function renderImg(currentPage=1) {
-  // console.log('data', data)
+export function renderImg(currentPage=1, funcPaginatOff) {
   
  movieApiService.axiosApiMovie(currentPage).then(response => {
   const allMovies = response.data.results;  
-      document.querySelector(".container").innerHTML = "";
+  console.log('currentPage',currentPage)
+      galleryContainer.innerHTML = "";
 
   const markup = allMovies.map((movie) =>
       `<li class="table-item film-card__item" data-id="${movie.id}">
@@ -35,14 +29,16 @@ export function renderImg(currentPage=1) {
     )
     .join("");
 
-
     galleryContainer.insertAdjacentHTML("beforeend", markup);
   })
   .catch(error => {
     console.log(error);
-
+  // Notify.failure(error.message);
+  // containerPaginationRef.classList.add('is-hidden');
+  }).finally(()=>{
+    // spinerStop();
+    currentPage===1 && funcPaginatOff()
   });
-
 };
 
 const genres = [{ "id": 28, "name": "Action" }, { "id": 12, "name": "Adventure" },
