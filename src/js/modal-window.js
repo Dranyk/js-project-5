@@ -19,6 +19,7 @@ function showModal() {
 function closeModal() {
   refs.modal.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
+  document.removeEventListener('click', onClickOutsideModal);
 }
 
 function onEscKeyPress(e) {
@@ -71,26 +72,6 @@ async function createMarkupModal(e) {
 refs.openModalCard.addEventListener('click', createMarkupModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
 
-async function createMarkupModal(e) {
-  const parentMovieCard = e.target.closest('.film-card__item');
-  const idMovieCard = parentMovieCard.dataset.id;
-
-  modalMoviesApi.id = idMovieCard;
-
-  await modalMoviesApi.fetchDetails().then(details => {
-    console.log(details.data);
-    clearModalInfo();
-    renderMarkupModal(details.data);
-    showModal();
-    const btWatched = document.querySelector('#title');
-    btWatched.addEventListener('click', handleClick);
-    window.addEventListener('keydown', onEscKeyPress);
-    document.addEventListener('click', onClickOutsideModal);
-  });
-}
-
-refs.openModalCard.addEventListener('click', createMarkupModal);
-refs.closeModalBtn.addEventListener('click', closeModal);
 const localStorageApi = {
   //Проверяет хранилище по ключу. Возвращает: Пустой массив - если не находит, и Данные - если находит
   getMovies(key) {
