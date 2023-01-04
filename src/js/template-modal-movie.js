@@ -45,8 +45,15 @@ export const modalWindowMovieMarkup = ({
         ${overview}
       </p>
       <div class="modal-movie__btn-wrapper">
-        <button type="button" id ="title" class="modal-btn modal-movie__btn-watched">
-          add to Watched
+        <button data-id="${id}" type="button" id ="title" class="modal-btn modal-movie__btn-watched">
+        
+             ${
+               JSON.parse(localStorage.filmsQueue).some(
+                 data => data.id === Number(id)
+               )
+                 ? 'remove from watched'
+                 : 'add to watched'
+             }
         </button>
         <button type="button" class="modal-btn modal-movie__btn-queue">
         add to queue
