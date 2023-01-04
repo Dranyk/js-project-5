@@ -19,6 +19,7 @@ function showModal() {
 function closeModal() {
   refs.modal.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
+  document.removeEventListener('click', onClickOutsideModal);
 }
 
 function onEscKeyPress(e) {
@@ -34,7 +35,7 @@ function onClickOutsideModal(e) {
   if (!modalInside) {
     closeModal();
   }
-  }
+}
 
 function clearModalInfo() {
   refs.renderModalCard.innerHTML = '';
@@ -43,6 +44,10 @@ function clearModalInfo() {
 function renderMarkupModal(data) {
   const renderModal = modalWindowMovieMarkup(data);
   refs.renderModalCard.insertAdjacentHTML('beforeend', renderModal);
+}
+
+function handleClick() {
+  console.log('hello');
 }
 
 async function createMarkupModal(e) {
@@ -56,6 +61,9 @@ async function createMarkupModal(e) {
     clearModalInfo();
     renderMarkupModal(details.data);
     showModal();
+    const btWatched = document.querySelector('#title');
+    console.log(btWatched);
+    btWatched.addEventListener('click', handleClick);
     window.addEventListener('keydown', onEscKeyPress);
     document.addEventListener('click', onClickOutsideModal);
   });
@@ -63,3 +71,62 @@ async function createMarkupModal(e) {
 
 refs.openModalCard.addEventListener('click', createMarkupModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
+
+const localStorageApi = {
+  //Проверяет хранилище по ключу. Возвращает: Пустой массив - если не находит, и Данные - если находит
+  getMovies(key) {
+    const keyStorage = this.load(key);
+
+    if (Array.isArray(keyStorage)) return keyStorage;
+
+    this.save(key, []);
+    return [];
+  },
+
+  //Добавляет фильм : Пушит переданный 'value' в LocalStorage с ключем 'key'
+  addMovie(key, value) {
+    const dataFromLocalStorage = this.load(key);
+    this.save(key, [value, ...dataFromLocalStorage]);
+  },
+
+  removeMovie(key, value) {
+    const dataFromLocalStorage = this.load(key);
+
+    const valueIndex = dataFromLocalStorage.indexOf(value);
+
+    if (0 <= valueIndex) {
+      dataFromLocalStorage.splice(valueIndex, 1);
+
+      this.save(key, dataFromLocalStorage);
+    }
+  },
+
+  // Принимает ключ `key` по которому будет произведена выборка.
+  load(key) {
+    try {
+      const serializedState = localStorage.getItem(key);
+
+      return serializedState === null ? undefined : JSON.parse(serializedState);
+    } catch (err) {
+      console.error('Get state error: ', err);
+    }
+  },
+
+  // Принимает ключ `key` и значение `value`.
+  save(key, value) {
+    try {
+      const serializedState = JSON.stringify(value);
+      localStorage.setItem(key, serializedState);
+    } catch (err) {
+      console.error('Set state error: ', err);
+    }
+  },
+};
+function handleClick(e) {
+  const storageKey = e.target.value;
+
+  const action = e.target.checked ? 'add' : 'remove';
+
+  localStorageApi.getMovies(storageKey);
+  localStorageApi.addMovie(storageKey);
+}

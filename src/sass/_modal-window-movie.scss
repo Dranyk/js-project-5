@@ -34,7 +34,7 @@
 }
 
 .modal-movie__title {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
@@ -47,14 +47,14 @@
   }
 }
 
-.modal-movie__info {
-  display: flex;
-  margin-bottom: 20px;
-}
+// .modal-movie__info {
+//   display: flex;
+//   margin-bottom: 20px;
+// }
 
 .modal-movie__list-specifications,
 .slash {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -62,24 +62,38 @@
 }
 
 .modal-movie__list-specifications {
-  margin-right: 40px;
-}
-
-.modal-movie__item-specifications,
-.modal-movie__item-values {
+  display: flex;
   margin-bottom: 8px;
 }
 
+.modal-movie__item-specifications {
+  width: max-content;
+}
+
+.modal-movie__specifications-name {
+  min-width: 70px;
+  margin-right: 40px;
+
+  @include desk {
+    margin-right: 85px;
+  }
+}
+
+// .modal-movie__item-specifications,
+// .modal-movie__item-values {
+//   margin-bottom: 8px;
+// }
+
 .modal-movie__list-values {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   color: #000000;
 
-  @include desk {
-    margin-left: 85px;
-  }
+  //   @include desk {
+  //     margin-left: 85px;
+  //   }
 }
 
 .modal-movie__item-vote {
@@ -96,12 +110,12 @@
   border-radius: 5px;
 }
 
-.modal-movie__item-genres {
-  // word-break: break-word;
-}
+// .modal-movie__item-genres {
+//   // word-break: break-word;
+// }
 
 .modal-movie__subtitle {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -112,7 +126,7 @@
 }
 
 .modal-movie__text {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
@@ -127,7 +141,7 @@
 }
 
 .modal-btn {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -146,12 +160,13 @@
   }
 }
 
-.modal-movie__btn-watched {
-  color: #ffffff;
-  background: #ff6b01;
-  border: none;
-}
+// .modal-movie__btn-watched {
+//   color: #ffffff;
+//   background: #ff6b01;
+//   border: none;
+// }
 
-.modal-movie__btn-queue {
+.modal-movie__btn-queue,
+.modal-movie__btn-watched {
   border: 1px solid #000000;
 }
