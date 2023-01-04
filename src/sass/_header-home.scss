@@ -59,7 +59,7 @@
   .logo-text {
     display: none;
     margin-left: 8px;
-    color: #fff;
+    color: rgba(255,255,255,0.2);
     font-style: 'Roboto';
     font-weight: 500;
     font-size: 30px;
@@ -67,8 +67,27 @@
   
     @media (min-width: 768px) {
       display: block;
+      background: url(https://dekorin.me/wp-content/uploads/2017/12/39-novogodnyaya-girlyanda.jpg)
+      repeat-x;
+      -webkit-background-clip: text;
+      background-size: contain;
+      animation: anime 13s linear infinite;
+      transition: all 500ms;
     }
   }
+  
+  @keyframes anime {
+    0%{
+      background-position: left 0 top 0;
+    }
+    50%{
+      background-position: left 100px top 0;
+    }
+    100%{
+      background-position: left 200px top 0;
+    }
+  }
+
   
   .menu {
     display: flex;
