@@ -9,6 +9,7 @@ export const modalWindowMovieMarkup = ({
   original_title,
   overview,
   genres,
+  id,
 }) =>
   ` <div class="modal-movie__img-wrapper">
       <img
@@ -21,25 +22,23 @@ export const modalWindowMovieMarkup = ({
       <div class="modal-content-wrapper">
         <h2 class="modal-movie__title">${title.toUpperCase()}</h2>
       <div class="modal-movie__info">
-        <ul class="modal-movie__list-specifications">
-          <li class="modal-movie__item-specifications">Vote / Votes</li>
-          <li class="modal-movie__item-specifications">Popularity</li>
-          <li class="modal-movie__item-specifications">Original Title</li>
-          <li class="modal-movie__item-specifications">Genre</li>
-        </ul>
-        <ul class="modal-movie__list-values">
-          <li class="modal-movie__item-values">
-            <span class="modal-movie__item-vote">${vote_average}</span
-            ><span class="slash"> / </span
-            ><span class="modal-movie__item-votes">${vote_count}</span>
-          </li>
-          <li class="modal-movie__item-values">${popularity}</li>
-          <li class="modal-movie__item-values">${original_title.toUpperCase()}</li>
-          <li class="modal-movie__item-values"><span class="modal-movie__item-genres">${genres
-            .map(genre => genre.name)
-            .join(',')}</span></li>
-        </ul>
-      </div>
+        
+
+<div class="modal-movie__list-specifications">
+                <p class="modal-movie__specifications-name">Vote / Votes</p><p class="modal-movie__list-values"><span class="modal-movie__item-vote">${vote_average}</span
+                ><span class="slash"> / </span
+                ><span class="modal-movie__item-votes">${vote_count}</span></p></div>
+              <div class="modal-movie__list-specifications">
+                <p class="modal-movie__specifications-name">Popularity</p><p class="modal-movie__list-values">${popularity}</p></div>
+              <div class="modal-movie__list-specifications">
+                <p class="modal-movie__specifications-name">Original Title</p><p class="modal-movie__list-values">${original_title.toUpperCase()}</p></div>
+              <div class="modal-movie__list-specifications">
+                <p class="modal-movie__specifications-name">Genre</p><p class="modal-movie__list-values">${genres
+                  .map(genre => genre.name)
+                  .join(', ')}</p></div>
+            </div>
+            
+      
       <h3 class="modal-movie__subtitle">About</h3>
       <p class="modal-movie__text">
         ${overview}
@@ -55,8 +54,14 @@ export const modalWindowMovieMarkup = ({
                  : 'add to watched'
              }
         </button>
-        <button type="button" class="modal-btn modal-movie__btn-queue">
-        add to queue
+        <button data-id="${id}" type="button" class="modal-btn modal-movie__btn-queue">
+          ${
+            JSON.parse(localStorage.filmsQueue).some(
+              data => data.id === Number(id)
+            )
+              ? 'remove from queue'
+              : 'add to queue'
+          }
         </button>
       </div>
       </div>

@@ -11,24 +11,25 @@ renderImg();
 
 function renderImg() {
   movieApiService.axiosApiMovie().then(movies => {
+  const allMovies = movies.data.results;  
 
-    const markup = movies.data.results.map((movie) =>
-      `<li class="table-item film-card__item" data-id="${movie.id}">
-            <div class="card-thumb">
-                <img 
-                src="https://image.tmdb.org/t/p/w400${movie.poster_path}" 
-                alt="${movie.title}" 
-                loading="lazy"
-                />
-            </div>
-            <div class="card-desc">
-                <p class="card-title">${movie.title}</p>
-                <p class="card-info">${GenresOfMovie(movie.genre_ids)}<span class="card-year">${movie.release_date.slice(0,4)}</span></p>
-            </div>
-        </li>`
+  // const markup = allMovies.map((movie) =>
+  //     `<li class="table-item film-card__item" data-id="${movie.id}">
+  //           <div class="card-thumb">
+  //               <img 
+  //               src="https://image.tmdb.org/t/p/w400${movie.poster_path}" 
+  //               alt="${movie.title}" 
+  //               loading="lazy"
+  //               />
+  //           </div>
+  //           <div class="card-desc">
+  //               <p class="card-title">${movie.title}</p>
+  //               <p class="card-info">${GenresOfMovie(movie.genre_ids)}<span class="card-year">${movie.release_date.slice(0,4)}</span></p>
+  //           </div>
+  //       </li>`
 
-    )
-    .join("");
+  //   )
+  //   .join("");
 
 
     galleryContainer.insertAdjacentHTML("beforeend", markup);
@@ -48,17 +49,20 @@ const genres = [{ "id": 28, "name": "Action" }, { "id": 12, "name": "Adventure" 
   { "id": 10749, "name": "Romance" }, { "id": 878, "name": "Science Fiction" }, { "id": 10770, "name": "TV Movie" },
   { "id": 53, "name": "Thriller" }, { "id": 10752, "name": "War" }, { "id": 37, "name": "Western" }];
 
-function GenresOfMovie(ids) {
-  const arr = ids.flatMap(id => genres.filter(element => element.id === id));
+// function GenresOfMovie(ids) {
+//   const arr = ids.flatMap(id => genres.filter(element => element.id === id));
 
-  let movieGenres = arr.map(genre => genre.name);
+//   let movieGenres = arr.map(genre => genre.name);
 
-  if (movieGenres.length > 2) {
-    const removedGenres = movieGenres.splice(0, 2);
+//   if (movieGenres.length > 2) {
+//     const removedGenres = movieGenres.splice(0, 2);
 
-    removedGenres.push('Other');
+//     removedGenres.push('Other');
 
-    return removedGenres.join(', ');
-  }
-
-}
+//     return removedGenres.join(', ');
+//   }
+//  if (movieGenres.length === 0) {
+//     return (movieGenres = 'Not found');
+//   }
+//   return movieGenres.join(', ');
+// }
