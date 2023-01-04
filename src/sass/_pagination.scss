@@ -8,19 +8,19 @@
     justify-content: center;
   }
   .tui-custon {
-    font-size: 15px;
+    font-size: 12px;
     text-decoration: none;
     width: 40px;
     display: flex;
     font-weight: 500;
     height: 40px;
-    color: #ff0;
-    background-color: #312ecc;
-    border-radius: 16px;
+    color: rgb(17, 17, 0);
+    background-color:  #FFFFFF;
+    border-radius: 5px;
     align-items: center;
     justify-content: center;
   }
   
   .tui-custon-is-selected {
-    background-color: rgb(164, 10, 242);
+    background-color: #FF6B08;
   }

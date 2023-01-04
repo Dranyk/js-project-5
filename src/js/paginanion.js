@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import MovieApiService from './pagination-service';
+import MovieApiService from './movie-service';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { spinerPlay, spinerStop } from './spiner';
 import { createMarkup } from './createMarkup';

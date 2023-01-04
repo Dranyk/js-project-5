@@ -4,13 +4,13 @@ export default class MovieApiService {
     #url = 'https://api.themoviedb.org';
     #query = '';
         
-    async fetchMovie() {
-      const { data } = await axios.get(`${this.#url}/3/trending/movie/day?api_key=${this.#api_key}`);
+    async fetchMovie(page) {
+      const { data } = await axios.get(`${this.#url}/3/trending/movie/day?api_key=${this.#api_key}&page=${page}`);
       return data;
     };
     
-    async fetchMovieByQuery() {                
-        const { data } = await axios.get(`${this.#url}/3/search/movie?api_key=${this.#api_key}&query=${this.#query}`); 
+    async fetchMovieByQuery(page) {                
+        const { data } = await axios.get(`${this.#url}/3/search/movie?api_key=${this.#api_key}&query=${this.#query}&page=${page}`); 
         return data;
     }
     resetPage() {
