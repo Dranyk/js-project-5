@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
-    "buffer": "^6.0.3",
+    "buffer": "^5.5.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },

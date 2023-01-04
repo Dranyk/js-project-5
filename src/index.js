@@ -2,7 +2,7 @@ import './js/movie-service';
 // import './js/popular_film_key';
 // import './js/popular_film';
 import './js/pagination';
-// import './js/search-movies';
+import './js/search-movies';
 import './js/createMarkup';
 import './js/template-modal-movie';
 import './js/modal-window';
