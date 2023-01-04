@@ -1,17 +1,19 @@
 import { MovieApiService } from "./popular_film_key";
+import { renderImg } from "./popular_film";
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const containerPaginationRef = document.getElementById("pagination");
-
 const containerRef = document.querySelector(".container");
 
 const PER_PAGE = 20;
 
 const unsplash = new MovieApiService({ per_page: PER_PAGE });
+
 const pagination = new Pagination(containerPaginationRef);
+
 const options = {
-  totalItems: 0,
+  totalItems: 20000,
   itemsPerPage: PER_PAGE,
   visiblePages: 7,
   page: 1,
@@ -37,49 +39,36 @@ const options = {
 };
 
 // const paginat = new Pagination(containerPaginationRef, options);
-const paginat = new Pagination('pagination', options);
-
-const page = paginat.getCurrentPage();
-console.log("paginat", paginat);
-
+// console.log("paginat", paginat);
+  const paginat = new Pagination('pagination', options);
+// const page = paginat.getCurrentPage();
+// console.log("page", page);
 
 const loadMorePopylarMovie = event => {
-  console.log("currentPage", event.page);
+  
   const currentPage = event.page;
-  // spinerPlay();
+  // spinerPlay()
+  paginat.reset(options.totalItems);
+  
   unsplash
     .axiosApiMovie(currentPage)
-    .then(({ results }) => {
-      const markup = renderImg(results);
-
-      containerRef.innerHTML = markup;
+    .then((results) => {
+      renderImg(results.data);
     })
     .catch(error => {
-      Notify.failure(error.message);
-      containerPaginationRef.classList.add('is-hidden');
+      // Notify.failure(error.message);
+      // containerPaginationRef.classList.add('is-hidden');
     })
     .finally(() => {
-      spinerStop();
+      // spinerStop();
+      
+      paginat.off('beforeMove', loadMorePopylarMovie);
     });
 };
 console.log('<<<<<paginat', paginat);
 
 paginat.on('beforeMove', loadMorePopylarMovie);
+paginat.on('afterMove', loadMorePopylarMovie);
 
-paginat.off('beforeMove', loadMorePopylarMovie);
 
-      // paginat.reset(total);
 
-paginat.on('beforeMove', evt => {
-    console.log(11111)
-  const { page } = evt;
-  const result = ajax.call({page});
-
-  if(result) {
-    pagination.movePageTo(page);
-  } else {
-    return false;
-  }
-});
-
-paginat.on('afterMove', ({ page }) => console.log(page));

@@ -9,9 +9,14 @@ const movieApiService  = new MovieApiService();
 
 renderImg();
 
-function renderImg() {
-  movieApiService.axiosApiMovie().then(movies => {
-  const allMovies = movies.data.results;  
+
+
+export function renderImg(data) {
+  console.log('data', data)
+  
+ movieApiService.axiosApiMovie(data?data.page:1).then(response => {
+  const allMovies = response.data.results;  
+      document.querySelector(".container").innerHTML = "";
 
   const markup = allMovies.map((movie) =>
       `<li class="table-item film-card__item" data-id="${movie.id}">
@@ -27,7 +32,6 @@ function renderImg() {
                 <p class="card-info">${GenresOfMovie(movie.genre_ids)}<span class="card-year">${movie.release_date.slice(0,4)}</span></p>
             </div>
         </li>`
-
     )
     .join("");
 
