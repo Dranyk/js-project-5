@@ -6,8 +6,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .tui-custon {
+    gap: 4px;    
+}
+
+.tui-custon {
     font-size: 12px;
     text-decoration: none;
     width: 40px;
@@ -19,8 +21,15 @@
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-  }
+
+    &:hover,
+    &:focus {
+        background-color: #FF6B08;
+    }
+}
   
-  .tui-custon-is-selected {
+.tui-custon-is-selected {
     background-color: #FF6B08;
-  }
+}
+
+  
