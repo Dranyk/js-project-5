@@ -11,7 +11,7 @@
       flex: 1 1 auto;
    }
 }
-//*===============================
+
 @import "./common";
 @import "./container";
 @import "./header-home";
@@ -22,5 +22,5 @@
 @import "./modal-window-movie";
 @import "./spiner";
 @import "./pagination";
-//*===============================
 @import "./footer";
+@import './btn_up';
