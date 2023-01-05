@@ -42,7 +42,10 @@ const page = pagination.getCurrentPage();
 
 async function loadMoreMovies (event) {
     const currentPage = event.page;
-    spinerPlay();
+    if (currentPage > 1) {
+      spinerPlay();
+    }
+    // spinerPlay();
     clearMarkup(); 
     await movieApiService.fetchMovie(currentPage)
       .then((data) => createMarkup(data))
@@ -50,13 +53,15 @@ async function loadMoreMovies (event) {
         Notify.failure(error.message);
         paginationRef.classList.add('is-hidden');
       })
-      .finally(() => {
+      .finally(() => { 
+        if (currentPage > 1) {
         spinerStop();
+        }
       });
 };
 
 pagination.on('beforeMove', loadMoreMovies);
-spinerPlay();
+// spinerPlay();
 movieApiService.fetchMovie(page).then((data) => {
     pagination.reset(data.total_results);
     createMarkup(data);    
@@ -64,10 +69,10 @@ movieApiService.fetchMovie(page).then((data) => {
   })
   .catch(error => {
     Notify.failure(error.message);
-  })
-  .finally(() => {
-    spinerStop();
   });
+  // .finally(() => {
+  //   // spinerStop();
+  // });
 
 async function loadMoreMoviesByQuery(event) {
     const currentPage = event.page;

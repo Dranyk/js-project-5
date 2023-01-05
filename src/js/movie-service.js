@@ -23,11 +23,11 @@ export default class MovieApiService {
         this.#query = newQuery;
     }  
     
-    async fetchGenres() {
-        return await axios.get(`${this.#url}/3/genre/movie/list?api_key=${this.#api_key}`).then(response => {
-            return response.data;
-        });        
-    }
+    // async fetchGenres() {
+    //     return await axios.get(`${this.#url}/3/genre/movie/list?api_key=${this.#api_key}`).then(response => {
+    //         return response.data;
+    //     });        
+    // }
     get id() {
       return this.idMovie;
     }

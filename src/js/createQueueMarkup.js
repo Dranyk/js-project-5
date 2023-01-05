@@ -17,8 +17,10 @@ export const createQueueMarkup = filmsQueue =>
             </div>
             <div class="card-desc">
                 <p class="card-title">${title}</p>
-                <p class="card-info">${genresList}
-                    <span class="card-year">${release_date.slice(0, 4)}</span>
+                <p class="card-info">${genresList}<span class="card-year">${release_date.slice(
+        0,
+        4
+      )}</span>
                 </p>
             </div>
         </li>`
