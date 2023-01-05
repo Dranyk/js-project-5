@@ -4,37 +4,43 @@ const refs = {
   modal: document.querySelector('.modal'),
 };
 
+export const LOCAL_ST_KEY = 'filmsQueue';
+
 export const createsFilmsQueue = () => {
-  if (!localStorage.filmsQueue) {
-    localStorage.setItem('filmsQueue', JSON.stringify([]));
+  if (!localStorage.getItem(LOCAL_ST_KEY)) {
+    localStorage.setItem(LOCAL_ST_KEY, JSON.stringify([]));
   }
 };
 
-const saveData = ({ id, poster_path, release_date, title }) => {
+const saveData = async ({ id, poster_path, release_date, title, genres }) => {
   const movieData = {
     id,
     poster_path,
     release_date,
     title,
+    genresList: `${genres
+      .map(({ name }) => name)
+      .slice(0, 2)
+      .join(', ')}${genres.length > 2 ? ', Other' : ''}`,
   };
 
   localStorage.setItem(
-    'filmsQueue',
+    LOCAL_ST_KEY,
     JSON.stringify([
-      ...JSON.parse(localStorage.getItem('filmsQueue')),
+      ...JSON.parse(localStorage.getItem(LOCAL_ST_KEY)),
       movieData,
     ])
   );
 };
 
 const removeData = ({ id }) => {
-  const updatedMovies = JSON.parse(localStorage.filmsQueue).filter(
+  const updatedMovies = JSON.parse(localStorage.getItem(LOCAL_ST_KEY)).filter(
     movie => movie.id != id
   );
 
-  localStorage.removeItem('filmsQueue');
+  localStorage.removeItem(LOCAL_ST_KEY);
 
-  localStorage.setItem('filmsQueue', JSON.stringify(updatedMovies));
+  localStorage.setItem(LOCAL_ST_KEY, JSON.stringify(updatedMovies));
 };
 
 const onQueueModalBtnClick = async e => {
@@ -46,7 +52,11 @@ const onQueueModalBtnClick = async e => {
 
   if (!data) return;
 
-  if (JSON.parse(localStorage.filmsQueue).some(({ id }) => id === data.id)) {
+  if (
+    JSON.parse(localStorage.getItem(LOCAL_ST_KEY)).some(
+      ({ id }) => id === data.id
+    )
+  ) {
     removeData(data);
 
     e.target.textContent = 'add to queue';
