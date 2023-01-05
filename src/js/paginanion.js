@@ -15,7 +15,7 @@ const movieApiService = new MovieApiService({per_page: PER_PAGE});
 const options = {
     totalItems: 0,
     itemsPerPage: PER_PAGE,
-    visiblePages: 7,
+    visiblePages: 5,
     page: 1,
     centerAlign: false,
     template: {
