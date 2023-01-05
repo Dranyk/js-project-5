@@ -3,7 +3,6 @@ import { createWatched } from './createWatched';
 
 const refs = {
   modal: document.querySelector('.modal'),
-  //btWatched: document.querySelector('#title'),
 };
 
 export const addWatched = () => {
