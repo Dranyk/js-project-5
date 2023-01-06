@@ -14,10 +14,12 @@ const refs = {
 
 function showModal() {
   refs.modal.classList.remove('is-hidden');
+  document.body.classList.add('modal-open');
 }
 
 function closeModal() {
   refs.modal.classList.add('is-hidden');
+  document.body.classList.remove('modal-open');
   window.removeEventListener('keydown', onEscKeyPress);
   document.removeEventListener('click', onClickOutsideModal);
 }
