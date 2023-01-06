@@ -1,6 +1,6 @@
 import poster404 from '../images/404.jpg';
 import MoviesApi from './movie-service';
-const moviesApi = new MoviesApi();
+// const moviesApi = new MoviesApi();
 const message = document.querySelector('.error-search');
 const container = document.querySelector('.main-list');
 export async function createMarkup(data) {
@@ -8,14 +8,14 @@ export async function createMarkup(data) {
         message.classList.remove('is-hidden');
     } else {  
         message.classList.add('is-hidden');     
-    // const genres = await moviesApi.fetchGenres().then((response) => response.genres);  
         return data.results.map(({id, poster_path, release_date, genre_ids, title}) => {
-        // const genresList = genres.filter(e => genre_ids.includes(e.id))
-        //   .map(e => e.name)
-        //   .join(', ');
-        let moviePosterPath = `https://image.tmdb.org/t/p/w400${poster_path}`;
+        let moviePosterPath1 = `https://image.tmdb.org/t/p/w300${poster_path}`;
+        let moviePosterPath2 = `https://image.tmdb.org/t/p/w400${poster_path}`;
+        let moviePosterPath3 = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        
+
         if (!poster_path) {
-            moviePosterPath = poster404;
+            moviePosterPath2 = poster404;
         }
         let movieData = '';
         if (release_date) {
@@ -24,8 +24,14 @@ export async function createMarkup(data) {
         const markup = 
         `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
-                <img 
-                src="${moviePosterPath}" 
+                <img class="card-img" 
+                srcset="
+                    ${moviePosterPath1} 300w,
+                    ${moviePosterPath2} 400w,
+                    ${moviePosterPath3} 500w
+               " 
+                sizes="(min-width: 1280px) 394px, (min-width: 768px) 336px, 280px"
+                src="${moviePosterPath2}"
                 alt="${title}" 
                 loading="lazy"
                 />
