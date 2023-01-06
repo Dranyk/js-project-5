@@ -1,5 +1,5 @@
-export const createQueueMarkup = filmsQueue =>
-  filmsQueue
+export const createFilmMarkup = films =>
+  films
     .map(
       ({
         id,
