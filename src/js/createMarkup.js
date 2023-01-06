@@ -8,11 +8,7 @@ export async function createMarkup(data) {
         message.classList.remove('is-hidden');
     } else {  
         message.classList.add('is-hidden');     
-    // const genres = await moviesApi.fetchGenres().then((response) => response.genres);  
         return data.results.map(({id, poster_path, release_date, genre_ids, title}) => {
-        // const genresList = genres.filter(e => genre_ids.includes(e.id))
-        //   .map(e => e.name)
-        //   .join(', ');
         let moviePosterPath = `https://image.tmdb.org/t/p/w400${poster_path}`;
         if (!poster_path) {
             moviePosterPath = poster404;
@@ -24,8 +20,9 @@ export async function createMarkup(data) {
         const markup = 
         `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
-                <img 
-                src="${moviePosterPath}" 
+                <img class="card-img"               
+                sizes="(min-width: 1280px) 394px, (min-width: 768px) 336px, 280px"
+                src="${moviePosterPath}"
                 alt="${title}" 
                 loading="lazy"
                 />
