@@ -9,6 +9,7 @@ import 'toastr/build/toastr.min.css';
 const refs = {
   showQueueBtn: document.querySelector('#showQueueBtn'),
   queueList: document.querySelector('.main-list'),
+  showWatchedBtn: document.querySelector('#showWatchedBtn'),
 };
 
 const render = filmsQueue => {
@@ -17,7 +18,7 @@ const render = filmsQueue => {
 
 const onShowQueueBtnClick = () => {
   const filmsQueue = JSON.parse(localStorage.getItem(LOCAL_ST_KEY));
-
+  refs.showWatchedBtn.classList.remove('menu_btn_default');
   if (filmsQueue.length === 0)
     toastr.warning('There are no films in the queue yet');
 

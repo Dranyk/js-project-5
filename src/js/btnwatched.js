@@ -17,5 +17,5 @@ const onShowWatchedBtnClick = () => {
 };
 
 addWatched();
-
+onShowWatchedBtnClick();
 refs.showWatchedBtn.addEventListener('click', onShowWatchedBtnClick);
