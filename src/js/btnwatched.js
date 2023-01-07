@@ -1,5 +1,5 @@
 import { createWatched } from './createWatched';
-// import { localStorageApi } from './watched';
+// import { addWatched } from './watched';
 
 const refs = {
   showWatchedBtn: document.querySelector('#showWatchedBtn'),
