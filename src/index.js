@@ -9,7 +9,7 @@ import './js/template-modal-movie';
 import './js/modal-window';
 import './js/spiner';
 import './js/watched';
-import './js/queueLocalStorageApi';
+import './js/localStorageApi';
 import './js/btnwatched';
 import './js/filmsQueue';
 import './js/article-footer';
