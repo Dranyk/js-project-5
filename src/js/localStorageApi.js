@@ -5,13 +5,13 @@ export class LocalStorageApi {
     this.key = key;
   }
 
-  createsDataModel = () => {
+  createsDataModel() {
     if (!localStorage.getItem(this.key)) {
       localStorage.setItem(this.key, JSON.stringify([]));
     }
-  };
+  }
 
-  saveData = async ({ id, poster_path, release_date, title, genres }) => {
+  async saveData({ id, poster_path, release_date, title, genres }) {
     const movieData = {
       id,
       poster_path,
@@ -27,9 +27,9 @@ export class LocalStorageApi {
       this.key,
       JSON.stringify([...JSON.parse(localStorage.getItem(this.key)), movieData])
     );
-  };
+  }
 
-  removeData = ({ id }) => {
+  removeData({ id }) {
     const updatedMovies = JSON.parse(localStorage.getItem(this.key)).filter(
       movie => movie.id != id
     );
@@ -37,9 +37,9 @@ export class LocalStorageApi {
     localStorage.removeItem(this.key);
 
     localStorage.setItem(this.key, JSON.stringify(updatedMovies));
-  };
+  }
 
-  render = (filmsList, films) => {
+  render(filmsList, films) {
     filmsList.innerHTML = `${createFilmMarkup(films)}`;
-  };
+  }
 }
