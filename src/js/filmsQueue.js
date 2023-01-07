@@ -1,14 +1,15 @@
 import { LocalStorageApi } from './localStorageApi';
 import { fetchMovieById } from './fetchMovieById';
 
-export const localStorageApi = new LocalStorageApi('filmsWatched');
+export const localStorageApi = new LocalStorageApi('filmsQueue');
 
 const refs = {
   modal: document.querySelector('.modal'),
 };
 
-const onWatchedModalBtnClick = async e => {
-  if (!e.target.classList.contains('modal-movie__btn-watched')) return;
+const onQueueModalBtnClick = async e => {
+  if (!e.target.classList.contains('modal-movie__btn-queue')) return;
+
   const currentMovieId = e.target.dataset.id;
 
   const data = await fetchMovieById(currentMovieId);
@@ -22,15 +23,15 @@ const onWatchedModalBtnClick = async e => {
   ) {
     localStorageApi.removeData(data);
 
-    e.target.textContent = 'add to watched';
+    e.target.textContent = 'add to queue';
     return;
   }
 
   localStorageApi.saveData(data);
 
-  e.target.textContent = 'remove from watched';
+  e.target.textContent = 'remove from queue';
 };
 
 localStorageApi.createsDataModel();
 
-refs.modal.addEventListener('click', onWatchedModalBtnClick);
+refs.modal.addEventListener('click', onQueueModalBtnClick);
