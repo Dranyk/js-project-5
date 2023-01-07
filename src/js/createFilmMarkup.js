@@ -9,7 +9,7 @@ export const createFilmMarkup = films =>
         genresList,
       }) => `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
-                <img 
+                <img class="card-img"
                 src="https://image.tmdb.org/t/p/w400${poster_path}" 
                 alt="${title}" 
                 loading="lazy"
