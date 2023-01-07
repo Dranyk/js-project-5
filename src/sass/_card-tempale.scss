@@ -11,6 +11,14 @@
   overflow: hidden;
 }
 
+.card-img {
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
 .card-desc {
   font-weight: 500;
   font-size: 12px;
@@ -42,8 +50,6 @@
     margin-bottom: 8px;
     height: 455px;
   }
-
-  
 
   .card-info {
     line-height: 1.33;
