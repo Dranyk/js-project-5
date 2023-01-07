@@ -44,10 +44,11 @@ export const modalWindowMovieMarkup = ({
         ${overview}
       </p>
       <div class="modal-movie__btn-wrapper">
-        <button data-id="${id}" type="button"  class="modal-btn modal-movie__btn-watched ">
-        
+
+        <button data-id="${id}" type="button"  class="modal-btn modal-movie__btn-watched">
+
              ${
-               JSON.parse(localStorage.filmsQueue).some(
+               JSON.parse(localStorage.filmsWatched).some(
                  data => data.id === Number(id)
                )
                  ? 'remove from watched'

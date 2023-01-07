@@ -5,6 +5,6 @@
          if (!preloader.classList.contains('done')) {
             preloader.classList.add('done');
          }
-      }, 2500)
-   }
+      }, 1200);
+   };
 })();

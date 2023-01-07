@@ -11,6 +11,7 @@ import './js/spiner';
 import './js/watched';
 import './js/queueLocalStorageApi';
 import './js/btnwatched';
+import './js/filmsQueue';
 import './js/article-footer';
 import './js/popup-footer';
 import './js/preloader';
