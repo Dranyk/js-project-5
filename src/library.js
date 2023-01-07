@@ -4,4 +4,3 @@ import './js/btnwatched';
 //*============================================
 import './js/article-footer';
 import './js/popup-footer';
-import './js/preloader';

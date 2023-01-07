@@ -48,4 +48,14 @@
     }
 }
 
+.tui-pagination .tui-first, .tui-pagination .tui-prev, .tui-pagination .tui-next, .tui-pagination .tui-last, .tui-pagination .tui-prev-is-ellip, .tui-pagination .tui-next-is-ellip {
+    height: 40px !important;    
+    background-color:  #F7F7F7;
+}
+
+.tui-pagination .tui-first,  .tui-pagination .tui-last, .tui-pagination .tui-prev-is-ellip, .tui-pagination .tui-next-is-ellip {
+    @media screen and (max-width:767px) {
+        display: none;
+    }
+}
   

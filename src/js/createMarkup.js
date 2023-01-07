@@ -24,7 +24,7 @@ export async function createMarkup(data) {
         const markup = 
         `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
-                <img 
+                <img class="card-img"
                 src="${moviePosterPath}" 
                 alt="${title}" 
                 loading="lazy"
