@@ -15,4 +15,4 @@ import './js/article-footer';
 import './js/popup-footer';
 
 import './js/btn_up';
-import 'animate.css';
+// import 'animate.css';
