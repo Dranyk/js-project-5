@@ -15,19 +15,18 @@ export const modalWindowMovieMarkup = ({
       <img
         src="${imgURL}/w400${poster_path}"
         alt="${title}"
-        
+
         class="modal-movie__img"
       />
 
         <button type="button" class="modal-trailer-button" data-modal-trailer-open>
-             
+
       </button>
     </div>
 
       <div class="modal-content-wrapper">
         <h2 class="modal-movie__title">${title.toUpperCase()}</h2>
       <div class="modal-movie__info">
-        
 
         <div class="modal-movie__list-specifications">
                 <p class="modal-movie__specifications-name">Vote / Votes</p><p class="modal-movie__list-values"><span class="modal-movie__item-vote">${vote_average}</span
@@ -42,15 +41,13 @@ export const modalWindowMovieMarkup = ({
                   .map(genre => genre.name)
                   .join(', ')}</p></div>
             </div>
-            
-      
+
       <h3 class="modal-movie__subtitle">About</h3>
       <p class="modal-movie__text">
         ${overview}
       </p>
       <div class="modal-movie__btn-wrapper">
         <button data-id="${id}" type="button"  class="modal-btn modal-movie__btn-watched">
-        
              ${
                JSON.parse(localStorage.filmsQueue).some(
                  data => data.id === Number(id)

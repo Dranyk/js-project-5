@@ -10,8 +10,19 @@ const refs = {
   queueList: document.querySelector('.main-list'),
 };
 
+export const makesBtnActive = btn => {
+  btn.dataset.current = 'true';
+};
+
+export const makesBtnInactive = btn => {
+  btn.dataset.current = 'false';
+};
+
 const onShowQueueBtnClick = () => {
   refs.showWatchedBtn.classList.remove('active');
+
+  makesBtnActive(refs.showQueueBtn);
+  makesBtnInactive(refs.showWatchedBtn);
 
   const filmsQueue = JSON.parse(localStorage.getItem(localStorageApi.key));
 
