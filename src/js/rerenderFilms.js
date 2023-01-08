@@ -1,5 +1,4 @@
 import { LocalStorageApi } from './localStorageApi';
-import { createFilmMarkup } from './createFilmMarkup';
 
 const localStorageApi = new LocalStorageApi();
 

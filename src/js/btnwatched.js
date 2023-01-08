@@ -22,7 +22,7 @@ const onShowWatchedBtnClick = () => {
   if (watchedFilms.length === 0)
     toastr.warning('There are no films in the watched yet');
 
-  localStorageApi.render(refs.watchedList, watchedFilms);
+  // localStorageApi.render(refs.watchedList, watchedFilms);
 };
 
 refs.showWatchedBtn.classList.add('active');
