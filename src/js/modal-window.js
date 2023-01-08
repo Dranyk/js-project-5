@@ -1,6 +1,7 @@
 import MoviesApi from './movie-service';
 import { modalWindowMovieMarkup } from './template-modal-movie';
 import { modalMovieTrailerMarkup } from './template-modal-movie';
+import { missingVideo } from './template-modal-movie';
 
 const modalMoviesApi = new MoviesApi();
 
@@ -74,6 +75,14 @@ function renderMarkupVideoTrailer(key) {
   refs.renderTrailerVideo.insertAdjacentHTML('beforeend', renderVideoTrailer);
 }
 
+function renderMarkupMissingVideo() {
+  const renderMissingVideoText = missingVideo();
+  refs.renderTrailerVideo.insertAdjacentHTML(
+    'beforeend',
+    renderMissingVideoText
+  );
+}
+
 async function createMarkupModal(e) {
   const parentMovieCard = e.target.closest('.film-card__item');
   const idMovieCard = parentMovieCard.dataset.id;
@@ -97,12 +106,38 @@ async function createMarkupModalVideoTrailer(e) {
   }
   await modalMoviesApi.fetchVideos().then(response => {
     const videoDetails = response.data.results;
-    videoDetails.map(item => {
-      if (item.name.toLowerCase() === 'Official Trailer'.toLowerCase()) {
-        renderMarkupVideoTrailer(item.key);
-      }
+    console.dir(videoDetails);
+    const movieKey = videoDetails.find(
+      video =>
+        video.type === 'Trailer' &&
+        video.site === 'YouTube' &&
+        video.name.toLowerCase().includes('official')
+    );
+    if (movieKey) {
+      renderMarkupVideoTrailer(movieKey.key);
       showModalTrailer();
-    });
+      return;
+    }
+
+    renderMarkupMissingVideo();
+    // const movieKey = videoDetails.map(item => {
+    //   console.dir(item);
+    // if (item.name.toLowerCase() === 'Official Trailer'.toLowerCase()) {
+    //   return renderMarkupVideoTrailer(item.key);
+    // }
+    // if (
+    //   item.name.toLowerCase().includes('official') &&
+    //   item.name.toLowerCase().includes('trailer')
+    // ) {
+    // if (item.name.official) {
+    //   renderMarkupVideoTrailer(item.key);
+    // }
+    // });
+    console.log(movieKey);
+    // if (movieKey.length === 0) {
+    //   renderMarkupMissingVideo();
+    // }
+    showModalTrailer();
   });
 }
 

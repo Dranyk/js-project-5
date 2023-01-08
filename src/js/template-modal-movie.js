@@ -1,3 +1,5 @@
+import poster404 from '../images/404.jpg';
+
 const imgURL = 'https://image.tmdb.org/t/p';
 
 export const modalWindowMovieMarkup = ({
@@ -10,10 +12,14 @@ export const modalWindowMovieMarkup = ({
   overview,
   genres,
   id,
-}) =>
-  ` <div class="modal-movie__img-wrapper">
+}) => {
+  let posterMovie = `${imgURL}/w400${poster_path}`;
+  if (!poster_path) {
+    posterMovie = poster404;
+  }
+  return ` <div class="modal-movie__img-wrapper">
       <img
-        src="${imgURL}/w400${poster_path}"
+        src="${posterMovie}"
         alt="${title}"
         
         class="modal-movie__img"
@@ -71,8 +77,12 @@ export const modalWindowMovieMarkup = ({
       </div>
       </div>
       `;
+};
 
 export const modalMovieTrailerMarkup = key =>
   `
 <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   `;
+
+export const missingVideo = () =>
+  `<div class="missing-video-text">Sorry, there is no trailer for this movie :(</div>`;
