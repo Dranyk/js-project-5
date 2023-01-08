@@ -51,4 +51,12 @@ export default class MovieApiService {
       }&language=en-US`
     );
   }
+
+  async fetchVideos() {
+    return await axios.get(
+      `${this.#url}/3/movie/${this.idMovie}/videos?api_key=${
+        this.#api_key
+      }&language=en-US`
+    );
+  }
 }

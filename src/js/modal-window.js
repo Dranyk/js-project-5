@@ -1,15 +1,18 @@
 import MoviesApi from './movie-service';
 import { modalWindowMovieMarkup } from './template-modal-movie';
+import { modalMovieTrailerMarkup } from './template-modal-movie';
 
 const modalMoviesApi = new MoviesApi();
 
 const refs = {
-  openModalBtn: document.querySelector('[data-modal-about-open]'),
   closeModalBtn: document.querySelector('[data-modal-about-close]'),
   modal: document.querySelector('[data-modal-about]'),
   openModalCard: document.querySelector('.main-list'),
   renderModalCard: document.querySelector('.js-modal-window'),
-  backdropCard: document.querySelector('.modal'),
+  openTrailerVideo: document.querySelector('.js-modal-window '),
+  closeTrailerModalBtn: document.querySelector('[data-modal-trailer-close]'),
+  renderTrailerVideo: document.querySelector('.js-modal-window-trailer'),
+  modalTrailer: document.querySelector('[data-modal-trailer]'),
 };
 
 function showModal() {
@@ -24,6 +27,19 @@ function closeModal() {
   document.removeEventListener('click', onClickOutsideModal);
 }
 
+function showModalTrailer() {
+  refs.modalTrailer.classList.remove('is-hidden');
+  window.removeEventListener('keydown', onEscKeyPress);
+  document.removeEventListener('click', onClickOutsideModal);
+}
+
+function closeModalTrailer() {
+  refs.modalTrailer.classList.add('is-hidden');
+  window.addEventListener('keydown', onEscKeyPress);
+  document.addEventListener('click', onClickOutsideModal);
+  clearModalTrailer();
+}
+
 function onEscKeyPress(e) {
   if (e.code === 'Escape') {
     closeModal();
@@ -33,8 +49,9 @@ function onEscKeyPress(e) {
 
 function onClickOutsideModal(e) {
   const modalInside = e.target.closest('.modal');
+  const modalOut = e.target.closest('.backdrop-trailer');
 
-  if (!modalInside) {
+  if (!modalInside && !modalOut) {
     closeModal();
   }
 }
@@ -43,9 +60,18 @@ function clearModalInfo() {
   refs.renderModalCard.innerHTML = '';
 }
 
+function clearModalTrailer() {
+  refs.renderTrailerVideo.innerHTML = '';
+}
+
 function renderMarkupModal(data) {
   const renderModal = modalWindowMovieMarkup(data);
   refs.renderModalCard.insertAdjacentHTML('beforeend', renderModal);
+}
+
+function renderMarkupVideoTrailer(key) {
+  const renderVideoTrailer = modalMovieTrailerMarkup(key);
+  refs.renderTrailerVideo.insertAdjacentHTML('beforeend', renderVideoTrailer);
 }
 
 async function createMarkupModal(e) {
@@ -55,7 +81,6 @@ async function createMarkupModal(e) {
   modalMoviesApi.id = idMovieCard;
 
   await modalMoviesApi.fetchDetails().then(details => {
-    console.log(details.data);
     clearModalInfo();
     renderMarkupModal(details.data);
     showModal();
@@ -65,5 +90,23 @@ async function createMarkupModal(e) {
   });
 }
 
+async function createMarkupModalVideoTrailer(e) {
+  const targetButtonClass = e.target.className;
+  if (targetButtonClass !== 'modal-trailer-button') {
+    return;
+  }
+  await modalMoviesApi.fetchVideos().then(response => {
+    const videoDetails = response.data.results;
+    videoDetails.map(item => {
+      if (item.name.toLowerCase() === 'Official Trailer'.toLowerCase()) {
+        renderMarkupVideoTrailer(item.key);
+      }
+      showModalTrailer();
+    });
+  });
+}
+
 refs.openModalCard.addEventListener('click', createMarkupModal);
 refs.closeModalBtn.addEventListener('click', closeModal);
+refs.openTrailerVideo.addEventListener('click', createMarkupModalVideoTrailer);
+refs.closeTrailerModalBtn.addEventListener('click', closeModalTrailer);

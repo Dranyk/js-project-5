@@ -18,13 +18,18 @@ export const modalWindowMovieMarkup = ({
         
         class="modal-movie__img"
       />
-      </div>
+
+        <button type="button" class="modal-trailer-button" data-modal-trailer-open>
+             
+      </button>
+    </div>
+
       <div class="modal-content-wrapper">
         <h2 class="modal-movie__title">${title.toUpperCase()}</h2>
       <div class="modal-movie__info">
         
 
-<div class="modal-movie__list-specifications">
+        <div class="modal-movie__list-specifications">
                 <p class="modal-movie__specifications-name">Vote / Votes</p><p class="modal-movie__list-values"><span class="modal-movie__item-vote">${vote_average}</span
                 ><span class="slash"> / </span
                 ><span class="modal-movie__item-votes">${vote_count}</span></p></div>
@@ -45,8 +50,9 @@ export const modalWindowMovieMarkup = ({
       </p>
       <div class="modal-movie__btn-wrapper">
         <button data-id="${id}" type="button"  class="modal-btn modal-movie__btn-watched">
+        
              ${
-               JSON.parse(localStorage.filmsWatched).some(
+               JSON.parse(localStorage.filmsQueue).some(
                  data => data.id === Number(id)
                )
                  ? 'remove from watched'
@@ -65,3 +71,8 @@ export const modalWindowMovieMarkup = ({
       </div>
       </div>
       `;
+
+export const modalMovieTrailerMarkup = key =>
+  `
+<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  `;
