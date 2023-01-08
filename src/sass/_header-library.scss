@@ -3,12 +3,12 @@
     overflow: hidden;
     width: 100%;
     height: 230px;
-    max-width: 1600px;
+    max-width: 1280px;
     margin: 0 auto;
   
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('/src/images/bgd-mob.jpg');
   
     @media (min-device-pixel-ratio: 2),
@@ -18,7 +18,7 @@
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),url('/src/images/bgd-mob@2x.jpg');
     }
   
-    @media (min-width: 768px) {
+    @media (min-width: 321px) {
       height: 216px;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),url('/src/images/bgd-tab.jpg');
   
@@ -30,7 +30,7 @@
       }
     }
   
-    @media (min-width: 1280px) {
+    @media (min-width: 769px) {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),url('/src/images/bgd-desk.jpg');
   
       @media (min-device-pixel-ratio: 2),
