@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@parcel/transformer-js": "^2.8.2",
+    "animate.css": "^4.1.1",
     "axios": "^1.2.2",
     "lodash": "^4.17.21",
     "lodash.throttle": "^4.1.1",
