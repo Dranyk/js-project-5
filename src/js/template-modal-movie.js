@@ -18,7 +18,7 @@ export const modalWindowMovieMarkup = ({
     posterMovie = poster404;
   }
   return ` <div class="modal-movie__img-wrapper">
-      <img
+      <img width=240
         src="${posterMovie}"
         alt="${title}"
         
