@@ -29,7 +29,7 @@ const onShowQueueBtnClick = () => {
   if (filmsQueue.length === 0)
     toastr.warning('There are no films in the queue yet');
 
-  localStorageApi.render(refs.queueList, filmsQueue);
+  // localStorageApi.render(refs.queueList, filmsQueue);
 };
 
 localStorageApi.createsDataModel();

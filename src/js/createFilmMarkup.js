@@ -1,16 +1,18 @@
+import poster404 from '../images/404.jpg';
+
 export const createFilmMarkup = films =>
   films
-    .map(
-      ({
-        id,
-        poster_path,
-        release_date,
-        title,
-        genresList,
-      }) => `<li class="table-item film-card__item" data-id="${id}">
+    .map(({ id, poster_path, release_date, title, genresList }) => {
+      let moviePosterPath = `https://image.tmdb.org/t/p/w400${poster_path}`;
+
+      if (!poster_path) {
+        moviePosterPath = poster404;
+      }
+
+      return `<li class="table-item film-card__item" data-id="${id}">
             <div class="card-thumb">
                 <img class="card-img"
-                src="https://image.tmdb.org/t/p/w400${poster_path}" 
+                src="${moviePosterPath}" 
                 alt="${title}" 
                 loading="lazy"
                 />
@@ -23,6 +25,6 @@ export const createFilmMarkup = films =>
       )}</span>
                 </p>
             </div>
-        </li>`
-    )
+        </li>`;
+    })
     .join('');

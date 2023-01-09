@@ -40,6 +40,6 @@ export class LocalStorageApi {
   }
 
   render(filmsList, films) {
-    filmsList.innerHTML = `${createFilmMarkup(films)}`;
+    filmsList.innerHTML = createFilmMarkup(films);
   }
 }
