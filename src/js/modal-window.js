@@ -1,7 +1,11 @@
 import MoviesApi from './movie-service';
 import { modalWindowMovieMarkup } from './template-modal-movie';
 import { modalMovieTrailerMarkup } from './template-modal-movie';
+
 import { missingVideo } from './template-modal-movie';
+
+import { rerenderFilms } from './rerenderFilms';
+
 
 const modalMoviesApi = new MoviesApi();
 
@@ -14,6 +18,15 @@ const refs = {
   closeTrailerModalBtn: document.querySelector('[data-modal-trailer-close]'),
   renderTrailerVideo: document.querySelector('.js-modal-window-trailer'),
   modalTrailer: document.querySelector('[data-modal-trailer]'),
+
+  libraryLink: document.querySelector('[aria-label="library"]'),
+  showWatchedBtn: document.querySelector('#showWatchedBtn'),
+};
+
+const rerenderObjPar = {
+  libraryLink: refs.libraryLink,
+  watchedBtn: refs.showWatchedBtn,
+  filmsList: refs.openModalCard,
 };
 
 function showModal() {
@@ -26,6 +39,8 @@ function closeModal() {
   document.body.classList.remove('modal-open');
   window.removeEventListener('keydown', onEscKeyPress);
   document.removeEventListener('click', onClickOutsideModal);
+
+  rerenderFilms(rerenderObjPar);
 }
 
 function showModalTrailer() {

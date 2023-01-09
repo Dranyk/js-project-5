@@ -10,6 +10,7 @@
    overflow-y: auto;
    overflow-x: hidden;
    transition: all 0.8s ease 0s;
+   z-index: -1;
 
    // .popup__body
    &__body {
@@ -30,6 +31,7 @@
       transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
       opacity: 0;
       color: #000;
+      z-index: -1;
       @media (max-width: 1213.98px) {
          min-width: 767.98px;
          padding: 30px;
@@ -101,6 +103,7 @@
 .popup.open {
    opacity: 1;
    visibility: visible;
+   z-index: 0;
 }
 .popup.open .popup__content {
    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
